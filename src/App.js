@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Col, Form, ListGroup, Nav, Row, Tab, Tabs } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -28,6 +28,13 @@ function Todos({ todos, setTodos }) {
 function App() {
   const [newTodoText, setNewTodoText] = useState('')
   const [todos, setInnerTodos] = useState(initialTodos)
+  useEffect(() => {
+    fetch('/todos')
+      .then((r) => r.json())
+      .then((todos) => {
+        setInnerTodos(todos)
+      })
+  }, [setInnerTodos])
   function setTodos(newTodos) {
     setInnerTodos(newTodos)
     localStorage.setItem('newTodos', JSON.stringify(newTodos))
@@ -47,12 +54,23 @@ function App() {
                           }}/>
           </Col>
           <Button onClick={() => {
-            setTodos([{
+            const newTodo = {
               text: newTodoText,
               id: Math.random(),
               isComplete: false,
-            }].concat(todos))
-            setNewTodoText('')
+            }
+            fetch('/todos', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({...newTodo, id: null})
+            })
+              .then((r) => r.json())
+              .then((newTodo) => {
+                setNewTodoText('')
+                setTodos([newTodo].concat(todos))
+              })
           }}>Добавить</Button>
         </Form.Group>
       </Form>

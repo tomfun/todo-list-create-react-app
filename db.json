@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "text": "Прочитать документацию https://www.npmjs.com/package/json-server#filter",
+      "isCompleted": false
+    },
+    {
+      "id": 2,
+      "text": "Посмотреть код https://www.npmjs.com/package/json-server#filter",
+      "isCompleted": false
+    },
+    {
+      "id": 3,
+      "text": "Написать сохжранение для изменённого туду",
+      "isCompleted": false
+    }
+  ]
+}

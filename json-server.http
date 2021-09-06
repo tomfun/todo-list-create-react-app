@@ -1,0 +1,5 @@
+### get all
+GET localhost:3004/todos
+
+### get single
+GET localhost:3004/todos/1
