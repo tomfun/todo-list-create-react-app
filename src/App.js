@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button, Col, Form, ListGroup, Row, Tab, Tabs } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
 const initialTodos = JSON.parse(localStorage.getItem('newTodos') || '[]')
 
@@ -13,10 +13,10 @@ function Todos({ todos, setTodos }) {
           {i+1}:{' '}
           {v.text}
           {v.isComplete ? (<Button onClick={() => {
-            v.isComplete = false;
+            v.isComplete = false
             setTodos([].concat(todos))
           }}>Не Сделано</Button>) : (<Button onClick={() => {
-            v.isComplete = true;
+            v.isComplete = true
             setTodos([].concat(todos))
           }}>Сделано</Button>)}
         </ListGroup.Item>
@@ -43,7 +43,7 @@ function App() {
             <Form.Control placeholder="what you want to do"
                           value={newTodoText}
                           onChange={(e) => {
-                            setNewTodoText(e.target.value);
+                            setNewTodoText(e.target.value)
                           }}/>
           </Col>
           <Button onClick={() => {
@@ -70,7 +70,7 @@ function App() {
 
 
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
