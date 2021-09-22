@@ -15,6 +15,11 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build --if-present
+
+      - run: cp build/index.html build/404.html
+      - run: mkdir build/about
+      - run: cp build/index.html build/about/index.html
+
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
