@@ -1,9 +1,9 @@
 name: GitHub Actions push to github Pages
 on:
   push:
-    branches: [ main, gh-pages ]
+    branches: [ main, test-ci ]
 jobs:
-  Explore-GitHub-Actions:
+  Build-and-Deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
